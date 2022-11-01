@@ -41,6 +41,12 @@ function userInput() {
   for (i = 0; i < 2; i++) {
     let newInput = document.createElement("input");
     newInput.type = "number";
+    if ((i = 0)) {
+      newInput.placeholder = "rows";
+    } else {
+      newInput.placeholder = "columns";
+    }
+
     inputContainer.appendChild(newInput).className = "inputField";
   }
   let newButton = document.createElement("button");
@@ -51,4 +57,12 @@ function userInput() {
 }
 
 //Uses user input to reMake grid
-function reMake() {}
+
+function reMake() {
+  let rowValue = inputContainer.firstChild.value;
+  let columnValue = inputContainer.lastChild.value;
+  while (container.firstChild) {
+    container.removeChild(container.lastChild);
+  }
+  defaultGrid(rowValue, columnValue);
+}
