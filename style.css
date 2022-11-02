@@ -8,11 +8,11 @@ body {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  background-color: #d8a7b1;
 }
 .container {
   width: 960px;
   height: 80%;
-  background-color: beige;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -31,7 +31,7 @@ body {
 }
 
 .gridRow {
-  border: 1px solid black;
+  border: 0.5px solid black;
   display: flex;
   flex-wrap: wrap;
   flex: 1;
@@ -39,14 +39,10 @@ body {
 }
 
 .cell {
-  border: 1px solid black;
-  background-color: aquamarine;
+  border: 0.5px solid black;
+  background-color: #fae8e0;
   flex: 1;
   padding: 0;
-}
-
-.cell:hover {
-  background-color: aqua;
 }
 
 button {

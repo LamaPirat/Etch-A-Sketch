@@ -30,6 +30,7 @@ function makeColumns(cellNum) {
       rows[j].appendChild(newCell).className = "cell";
     }
   }
+  registerHover();
 }
 
 // Creates inputFields
@@ -41,7 +42,7 @@ function userInput() {
   for (i = 0; i < 2; i++) {
     let newInput = document.createElement("input");
     newInput.type = "number";
-    if ((i = 0)) {
+    if (i == 0) {
       newInput.placeholder = "rows";
     } else {
       newInput.placeholder = "columns";
@@ -51,7 +52,7 @@ function userInput() {
   }
   let newButton = document.createElement("button");
   newButton.textContent = "Confirm";
-  newButton.onclick = "reMake()";
+  newButton.onclick = reMake;
   container.appendChild(inputContainer).className = "inputContainer";
   container.appendChild(newButton).className = "gridChange";
 }
@@ -59,10 +60,27 @@ function userInput() {
 //Uses user input to reMake grid
 
 function reMake() {
-  let rowValue = inputContainer.firstChild.value;
-  let columnValue = inputContainer.lastChild.value;
+  let inputFields = document.querySelectorAll(".inputField");
+  let rowValue = inputFields[0].value;
+  let columnValue = inputFields[1].value;
   while (container.firstChild) {
     container.removeChild(container.lastChild);
   }
   defaultGrid(rowValue, columnValue);
+}
+
+//Mouseover event
+function registerHover() {
+  let elem = document.querySelectorAll(".cell");
+  elem.forEach((el) => {
+    el.addEventListener("mouseover", () => randomRGB(el));
+  });
+}
+
+//Picks random values for rgb
+function randomRGB(el) {
+  let a = Math.floor(Math.random() * 255);
+  let b = Math.floor(Math.random() * 255);
+  let c = Math.floor(Math.random() * 255);
+  el.style.backgroundColor = "rgb(" + [a, b, c].join(",") + ")";
 }
